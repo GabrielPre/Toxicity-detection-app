@@ -1,0 +1,4 @@
+flask==1.1.2
+detoxify
+pandas
+pytest==6.2.5
