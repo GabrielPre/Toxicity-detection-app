@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dockerfile
+    ports:
+      - "4999:5000"
+  codeceptjs:
+    image: codeceptjs/codeceptjs
+    depends_on:
+      - web
+    volumes:
+      - ./end_to_end_testing:/tests
+    environment:
+      HOME_URL: http://host.docker.internal:4999
