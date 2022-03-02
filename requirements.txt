@@ -1,4 +1,4 @@
 flask==1.1.2
-detoxify
-pandas
+detoxify==0.4.0
+pandas==1.4.1
 pytest==6.2.5
