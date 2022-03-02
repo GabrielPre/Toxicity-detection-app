@@ -1,4 +1,3 @@
-require('ts-node/register')
 const { setHeadlessWhen } = require('@codeceptjs/configure');
 
 // turn on headless mode when running with HEADLESS=true environment variable
