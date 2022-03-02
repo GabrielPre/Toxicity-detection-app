@@ -1,6 +1,6 @@
 from unittest import result
 from detoxify import Detoxify 
 
-def predict():
-    results = Detoxify('original').predict('I hate you')
+def predict(inputmessage):
+    results = Detoxify('original').predict(inputmessage)
     return results

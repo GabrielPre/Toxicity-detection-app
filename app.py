@@ -15,7 +15,7 @@ def index():
 @app.route('/classify', methods=['GET'])
 def classify():
     inputmessage = request.args.get('inputmessage')
-    return jsonify(format(predict()))
+    return jsonify(format(predict(inputmessage)))
 
 
 if __name__ == '__main__':
