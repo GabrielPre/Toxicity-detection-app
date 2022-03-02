@@ -54,17 +54,15 @@ pipeline {
         // On release, wait for user input before pushing to main
         stage('Push to main') {
             when { branch 'release' }
+            input {
+                message "Push to main?"
+                ok "Yes."
+            }
             steps {
-                input {
-                    message "Push to main?"
-                    ok "Yes."
-                }
-                steps {
-                    sshagent(credentials: ['github_credentials']) {
-                        bat 'git checkout main || git checkout -b main'
-                        bat 'git rebase origin/release'
-                        bat 'git push origin main'
-                    }
+                sshagent(credentials: ['github_credentials']) {
+                    bat 'git checkout main || git checkout -b main'
+                    bat 'git rebase origin/release'
+                    bat 'git push origin main'
                 }
             }
         }
