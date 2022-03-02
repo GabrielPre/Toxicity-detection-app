@@ -1,4 +1,3 @@
-from flask.wrappers import Request
 from flask import Flask, request, jsonify
 from Ml_model import predict
 app = Flask(__name__)
