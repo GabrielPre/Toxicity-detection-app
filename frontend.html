@@ -38,15 +38,23 @@
         <script>
 
         function analyse() {
-            var inputmessage = document.getElementById("text_id").value
-            var response = fetch('/classify?inputmessage='+inputmessage)
-            .then((response) => response.json())
-            .then((json) => {
-                console.log(json)
-                json = json.replace(/,/g,'<br>') // removes all occurences of "," instead of first occurence only
-                json = json.replace(/{|}|'|/g,'')
-                document.getElementById("toChange").innerHTML = 'The "' + inputmessage + '" sentence was rated as <br>' + json
-            })
+            let inputmessage = document.getElementById("text_id").value
+
+            fetch('/classify?inputmessage='+inputmessage)
+                .then((response) => response.json())
+                .then((json) => {
+                    console.log(json.toxicity)
+
+                    result = ''
+                    if (json.toxicity > 0.3) {
+                        result = '<span style="color: red">toxic</span>.'
+                    }
+                    else {
+                        result = '<span style="color: green">not toxic</span>.'
+                    }
+
+                    document.getElementById("toChange").innerHTML = 'The "' + inputmessage + '" sentence was rated as ' + result + '<br><br>(toxicity=' + (Math.floor(json.toxicity * 1000) / 10) + '%)'
+                })
         }
         
         </script>

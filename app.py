@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
 from Ml_model import predict
 app = Flask(__name__)
 
@@ -14,7 +14,11 @@ def index():
 @app.route('/classify', methods=['GET'])
 def classify():
     inputmessage = request.args.get('inputmessage')
-    return jsonify(format(predict(inputmessage)))
+    result = predict(inputmessage)
+
+    result = { k: float(v) for k, v in result.items() }
+
+    return result
 
 
 if __name__ == '__main__':
