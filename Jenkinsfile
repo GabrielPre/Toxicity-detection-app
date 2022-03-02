@@ -53,7 +53,7 @@ pipeline {
 
         // On release, wait for user input before pushing to main
         stage('Push to main') {
-            when { branch 'release' }
+            when { beforeInput true ; branch 'release' }
             input {
                 message "Push to main?"
                 ok "Yes."
