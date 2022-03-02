@@ -3,7 +3,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile.dockerfile
+      dockerfile: Dockerfile
     ports:
       - "4999:5000"
   codeceptjs:
