@@ -9,7 +9,7 @@ pipeline {
             when { not { anyOf { branch 'main'; branch 'release'; branch 'develop' } } }
             steps {
                 bat 'docker build . -t "web"'
-                bat 'docker run --entrypoint "pytest test_unit.py" web'
+                bat 'docker run --entrypoint "pytest" web "test_unit.py"'
             }
         }
 
@@ -18,7 +18,7 @@ pipeline {
             when { branch 'develop' }
             steps {
                 bat 'docker build . -t "web"'
-                bat 'docker run --entrypoint "pytest test_stress.py" web'
+                bat 'docker run --entrypoint "pytest" web "test_stress.py"'
             }
         }
 
@@ -26,7 +26,7 @@ pipeline {
             // Integration test on develop branch
             when { branch 'develop' }
             steps {
-                bat 'docker run --entrypoint "pytest test_integration.py" web'
+                bat 'docker run --entrypoint "pytest" web "test_integration.py"'
             }
         }
 
