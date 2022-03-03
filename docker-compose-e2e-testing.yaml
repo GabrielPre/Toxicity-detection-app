@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "4999:5000"
+      - "5000:5000"
   codeceptjs:
     image: codeceptjs/codeceptjs
     depends_on:
@@ -13,4 +13,4 @@ services:
     volumes:
       - ./end_to_end_testing:/tests
     environment:
-      HOME_URL: http://host.docker.internal:4999
+      HOME_URL: http://host.docker.internal:5000

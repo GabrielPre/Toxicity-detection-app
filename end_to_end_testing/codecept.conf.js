@@ -1,5 +1,5 @@
 exports.config = {
-  tests: './**_test.ts',
+  tests: './**_test.js',
   output: './output',
   helpers: {
     Playwright: {
