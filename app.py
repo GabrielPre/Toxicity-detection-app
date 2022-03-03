@@ -1,5 +1,5 @@
 from flask import Flask, request
-from Ml_model import predict
+from Ml_model import predict, generate_model
 app = Flask(__name__)
 
 
@@ -23,3 +23,4 @@ def classify():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+    generate_model()
