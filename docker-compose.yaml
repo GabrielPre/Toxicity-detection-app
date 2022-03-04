@@ -1,8 +1,20 @@
 version: '3'
 services:
   web:
+    container_name: web
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "5000:5000"
+
+  prometheus:
+        image: prom/prometheus
+        container_name: prometheus
+        ports:
+                - 9090:9090
+        volumes:
+                - "./prometheus:/etc/prometheus"
+        restart: always
+        command: --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus.yml
+
