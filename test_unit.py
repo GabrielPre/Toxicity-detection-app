@@ -1,4 +1,4 @@
-# from Ml_model import predict
+from Ml_model import predict
 import os
 
 def test_predict_severe_toxicity():
