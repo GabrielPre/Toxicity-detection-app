@@ -2,9 +2,7 @@ def branch_name = "${BRANCH_NAME}"
 
 pipeline {
     agent any
-    environment {
-        KEY = 'encpUq6k2X_K3BGZWvujQyCpAkR8S6k_CiHZxxki7kA='
-    }
+
     stages {
         stage('Run unit tests') {
             // Run unit tests on feature branches
