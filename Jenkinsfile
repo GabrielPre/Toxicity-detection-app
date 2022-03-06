@@ -8,6 +8,7 @@ pipeline {
             // Run unit tests on feature branches
             when { not { anyOf { branch 'main'; branch 'release'; branch 'develop' } } }
             steps {
+                env.KEY = 'encpUq6k2X_K3BGZWvujQyCpAkR8S6k_CiHZxxki7kA='
                 bat 'docker build . -t "web"'
                 bat 'docker run --entrypoint "pytest" web "test_unit.py"'
             }
