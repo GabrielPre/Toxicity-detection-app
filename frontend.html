@@ -43,34 +43,44 @@
             fetch('/classify?inputmessage='+inputmessage)
                 .then((response) => response.json())
                 .then((json) => {
-
                     max = Math.max(json.severe_toxicity, json.obscene, json.threat, json.insult, json.identity_attack)
                     result = ''
-                    if (max < 0.5) {
+                    maxprint = ''
+                    if(max > 0.5)
+                    {
+                        if (max == json.severe_toxicity) {
+                            result = '<span style="color: red">toxic (severely toxic)</span>.'
+                            maxprint = '(severe toxicity = '+(Math.floor(json.severe_toxicity * 1000) / 10)+'%)'
+                        }
+                        else if (max == json.obscene) {
+                            result = '<span style="color: red">toxic (obscenity)</span>.'
+                            maxprint = '(Obscene = '+(Math.floor(json.obscene * 1000) / 10)+'%)'
+                        }
+                        else if (max == json.threat) {
+                            result = '<span style="color: red">toxic (threatening)</span>.'
+                            maxprint = '(Threat = '+(Math.floor(json.threat * 1000) / 10)+'%)'
+                        }
+                        else if (max == json.insult) {
+                            result = '<span style="color: red">toxic (insulting)</span>.'
+                            maxprint = '(Insult = '+(Math.floor(json.insult * 1000) / 10)+'%)'
+                        }
+                        else if (max == json.identity_attack) {
+                            result = '<span style="color: red">toxic (identity attack)</span>.'
+                            maxprint = '(Identity attack = '+(Math.floor(json.identity_attack * 1000) / 10)+'%)'
+                        }
+                        else
+                        {
+                            result = '<span style="color: red">toxic</span>.'
+                        }
+                    }
+                    else if (json.toxicity > 0.5)
+                    {
+                        result = '<span style="color: red">toxic</span>.'
+                    }
+                    else
+                    {
                         result = '<span style="color: green">not toxic</span>.'
-                        maxprint = ''
                     }
-                    else if (max == json.severe_toxicity) {
-                        result = '<span style="color: red">severely toxic</span>.'
-                        maxprint = '(severe toxicity = '+(Math.floor(json.severe_toxicity * 1000) / 10)+'%)'
-                    }
-                    else if (max == json.obscene) {
-                        result = '<span style="color: red">obscene</span>.'
-                        maxprint = '(Obscene = '+(Math.floor(json.obscene * 1000) / 10)+'%)'
-                    }
-                    else if (max == json.threat) {
-                        result = '<span style="color: red">a threat</span>.'
-                        maxprint = '(Threat = '+(Math.floor(json.threat * 1000) / 10)+'%)'
-                    }
-                    else if (max == json.insult) {
-                        result = '<span style="color: red">an insult</span>.'
-                        maxprint = '(Insult = '+(Math.floor(json.insult * 1000) / 10)+'%)'
-                    }
-                    else if (max == json.identity_attack) {
-                        result = '<span style="color: red">an identity attack</span>.'
-                        maxprint = '(Identity attack = '+(Math.floor(json.identity_attack * 1000) / 10)+'%)'
-                    }
-
 
                     document.getElementById("toChange").innerHTML = 'The "' + inputmessage + '" sentence was rated as ' + result + '<br><br>(toxicity=' + (Math.floor(json.toxicity * 1000) / 10) + '%) <br>'+maxprint
                 })
