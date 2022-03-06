@@ -14,4 +14,5 @@ RUN python Ml_model.py
 COPY *  ./
 
 EXPOSE 5000
+EXPOSE 8010
 CMD ["flask","run"]
