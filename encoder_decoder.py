@@ -29,5 +29,5 @@ def decode(text):
       print("Text must be converted to Bytes")
 
 def get_key_from_jenkins_env():
-    KEY = os.environ['KEY']
+    KEY = 'encpUq6k2X_K3BGZWvujQyCpAkR8S6k_CiHZxxki7kA='
     return bytes(KEY, 'utf_8')
