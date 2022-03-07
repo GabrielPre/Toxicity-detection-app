@@ -17,6 +17,8 @@ The website is now accessible on [http://localhost:5000](http://localhost:5000).
 
 ## **Building & running the local docker image**
 
+👉The docker image is optimized for caching: see [the Dockerfile](https://github.com/GabrielPre/Toxicity-detection-app/blob/main/Dockerfile) for more information.
+
 Building the docker image:
 ```
 docker compose build
@@ -65,6 +67,15 @@ This will automatically merge on release, which will then ask the user for valid
 
 On main, the image will be built & deployed.
 ![image](https://user-images.githubusercontent.com/37049291/157021192-cc9df067-463a-4972-9414-a93bbd748271.png)
+
+# Prometheus
+
+When running the docker compose, head to [localhost:9090](http://localhost:9090/) to see metrics & alerts about the running application.
+
+![image](https://user-images.githubusercontent.com/37049291/157042921-0c6ed640-25ce-4018-b771-9da9b6a17e7c.png)
+
+![image](https://user-images.githubusercontent.com/37049291/157042738-de8c47bd-786a-48ce-b27d-bba5550ed9ae.png)
+
 
 # Authors
 Céline YE
