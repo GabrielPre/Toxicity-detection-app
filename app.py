@@ -12,6 +12,9 @@ INPROGRESS = Gauge('detoxify_inprogress', 'Number of Hello Worlds in progress.')
 LAST = Gauge('detoxify_last_time_seconds', 'The last time a Hello World was served.')
 LATENCY = Summary('detoxify_latency_seconds', 'Time for a request Hello World.')
 
+@app.route('/metrics')
+def metrics():
+    return ""
 
 with open('frontend.html') as f:
     frontend_template = f.read()
