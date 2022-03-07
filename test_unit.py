@@ -5,6 +5,7 @@ def test_predict_positive():
     assert predict('oh hi')['toxicity'] < 0.1
     assert predict('i like you')['toxicity'] < 0.1
     assert predict('thanks!')['toxicity'] < 0.1
+    assert predict('who are you?')['toxicity'] < 0.1
 
 def test_predict_severe_toxicity():
     severe_toxicity_1 = b'c21lbGx5IGZhdCBtb3RoZXIgZnVja2Vy'
